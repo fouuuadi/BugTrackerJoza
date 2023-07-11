@@ -40,6 +40,21 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+        <dependency>
+            <groupId>net.thauvin.erik.httpstatus</groupId>
+            <artifactId>httpstatus</artifactId>
+            <version>1.0.5</version>
+        </dependency>
+		<dependency>
+			<groupId>io.goodforgod</groupId>
+			<artifactId>http-common</artifactId>
+			<version>1.0.0</version>
+		</dependency>
+		<dependency>
+			<groupId>io.goodforgod</groupId>
+			<artifactId>http-common</artifactId>
+			<version>1.0.0</version>
+		</dependency>
 	</dependencies>
 
 	<build>
