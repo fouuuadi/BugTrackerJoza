@@ -9,35 +9,32 @@ import java.util.List;
 @Service
 public class TicketService
 {
-    public final TicketService ticketServiceRepository;
     @Autowired
-    public TicketService(TicketService ticketServiceRepository) {
-        this.ticketServiceRepository = ticketServiceRepository;
-    }
+    public TicketRepository ticketRepository;
 
     public Ticket getTicketById(Long id)
     {
-        return ticketServiceRepository.getTicketById(id);
+        return ticketRepository.getTicketById(id);
     }
 
     public List<Ticket> getAllTicket(Long id)
     {
-        return ticketServiceRepository.getAllTicket(id);
+        return ticketRepository.getAllTicket(id);
 
     }
 
     public Ticket createTicket(TicketService ticketService)
     {
-        return ticketServiceRepository.save(ticketService);
+        return ticketRepository.save(ticketService);
     }
 
-    private Ticket save(TicketService ticketServiceRepository) {
+    private Ticket save(TicketService ticketRepository) {
         return null;
     }
 
     public Ticket updateTicket(Long id, TicketService updatedticketServiceRepository)
     {
-        TicketService existingTicket = ticketServiceRepository.findById(id).orElse(null);
+        TicketService existingTicket = ticketRepository.findById(id).orElse(null);
         if (existingTicket != null)
         {
             existingTicket.setName(updatedticketServiceRepository.getName());
@@ -45,13 +42,13 @@ public class TicketService
             existingTicket.setDescription(updatedticketServiceRepository.getDame());
             existingTicket.setPriority(updatedticketServiceRepository.getPriority());
 
-            return ticketServiceRepository.save(existingTicket);
+            return ticketRepository.save(existingTicket);
         }
         return null;
     }
 
     public Ticket deleteTicket(Long id)
     {
-        return ticketServiceRepository.deleteById(id);
+        return ticketRepository.deleteById(id);
     }
 }

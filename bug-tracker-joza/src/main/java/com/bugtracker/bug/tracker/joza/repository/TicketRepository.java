@@ -1,4 +1,6 @@
 package com.bugtracker.bug.tracker.joza.repository;
 
-public class TicketRepository {
+import com.bugtracker.bug.tracker.joza.domain.ticket.Ticket;
+
+public interface TicketRepository extends JpaRepository<Ticket, Long> {
 }
