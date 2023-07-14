@@ -18,4 +18,6 @@ public interface TicketRepository extends JpaRepository<Ticket, Long> {
     @Query("select t from Ticket t")
     List<Ticket> getAllTicket();
 
+    boolean existsByName(String name);
+
 }

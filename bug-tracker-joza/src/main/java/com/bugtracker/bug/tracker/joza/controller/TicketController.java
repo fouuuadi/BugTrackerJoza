@@ -8,10 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -44,21 +41,36 @@ public class TicketController {
             return new ResponseEntity<>(response, HttpStatusCode.valueOf(200));
         }
     }
-//
-//    @DeleteMapping("/{id}")
-//    public ResponseEntity<List<Ticket>> deleteTicket(@PathVariable Long id) {
-//
-//        return new ResponseEntity<>(result, HttpStatusCode.valueOf(201));
-//    }
-//
-//    @PutMapping("/{id}")
-//    public ResponseEntity<List<Ticket>> updateTicket(@PathVariable Long id) {
-//
-//        return new ResponseEntity<>(result, HttpStatusCode.valueOf(201));
-//    }
-//    @PostMapping("/")
-//    public ResponseEntity<List<Ticket>> createTicket() {
-//
-//        return new ResponseEntity<>(result, HttpStatusCode.valueOf(201));
-//    }
+    @DeleteMapping("/{id}")
+    public  ResponseEntity<ApiResponse<Ticket>> deleteTicket(@PathVariable Long id){
+        Ticket ticket = this.ticketService.deleteTicket(id);
+        if (ticket == null) {
+            ApiResponse response = new ApiResponse("Ticket not found", "", null);
+            return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
+        } else {
+            ApiResponse response = new ApiResponse("", "", ticket);
+            return new ResponseEntity<>(response, HttpStatusCode.valueOf(200));
+        }
+    }
+    @PutMapping("/{id}")
+    public  ResponseEntity<ApiResponse<Ticket>> updateTicket(@PathVariable Long id){
+        Ticket ticket = this.ticketService.updateTicket(id);
+        if (ticket == null) {
+            ApiResponse response = new ApiResponse("Ticket not found", "", null);
+            return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
+        } else {
+            ApiResponse response = new ApiResponse("", "", ticket);
+            return new ResponseEntity<>(response, HttpStatusCode.valueOf(200));
+        }
+    }
+    @PostMapping("/")
+    public ResponseEntity<ApiResponse<Ticket>> createTicket(){
+        Ticket ticket = this.ticketService.createTicket();
+        if (ticket == null) {
+            ApiResponse response = new ApiResponse("Ticket not found", "", null);
+            return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
+        } else {
+            ApiResponse response = new ApiResponse("", "", ticket);
+            return new ResponseEntity<>(response, HttpStatusCode.valueOf(200));
+        }
 }
