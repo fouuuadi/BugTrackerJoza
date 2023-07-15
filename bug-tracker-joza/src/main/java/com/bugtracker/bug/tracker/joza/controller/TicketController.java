@@ -64,8 +64,8 @@ public class TicketController {
         }
     }
     @PostMapping("/")
-    public ResponseEntity<ApiResponse<Ticket>> createTicket(){
-        Ticket ticket = this.ticketService.createTicket();
+    public ResponseEntity<ApiResponse<Ticket>> createTicket() {
+        Ticket ticket = this.ticketService.createTicket(ticket);
         if (ticket == null) {
             ApiResponse response = new ApiResponse("Ticket not found", "", null);
             return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
@@ -73,4 +73,5 @@ public class TicketController {
             ApiResponse response = new ApiResponse("", "", ticket);
             return new ResponseEntity<>(response, HttpStatusCode.valueOf(200));
         }
+    }
 }

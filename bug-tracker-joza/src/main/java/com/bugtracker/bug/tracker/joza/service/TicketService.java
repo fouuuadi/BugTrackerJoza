@@ -1,11 +1,8 @@
 package com.bugtracker.bug.tracker.joza.service;
 
-import com.bugtracker.bug.tracker.joza.domain.response.ApiResponse;
 import com.bugtracker.bug.tracker.joza.domain.ticket.Ticket;
 import com.bugtracker.bug.tracker.joza.repository.TicketRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -39,7 +36,7 @@ public class TicketService {
     public Ticket createTicket(Ticket ticket) {
         // Vérif de l'unicité de l'ID
         if (ticketRepository.existsById(ticket.getId())) {
-            throw new IllegalArgumentException("Un ticket avec cet ID existe déjà.");
+            throw new IllegalArgumentException("Cet ID existe déjà.");
         }
 
         // Vérif de l'unicité du nom
@@ -50,9 +47,10 @@ public class TicketService {
         return ticketRepository.save(ticket);
     }
 
-    public Ticket updateTicket(Long id, Ticket updatedTicket) {
+    public Ticket updateTicket(Long id) {
         Ticket existingTicket = ticketRepository.findById(id).orElse(null);
         if (existingTicket != null) {
+            Ticket updatedTicket = null;
             existingTicket.setName(updatedTicket.getName());
             existingTicket.setAuthor(updatedTicket.getAuthor());
             existingTicket.setDescription(updatedTicket.getName());
