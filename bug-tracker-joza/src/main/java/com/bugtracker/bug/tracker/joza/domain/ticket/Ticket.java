@@ -1,22 +1,23 @@
 package com.bugtracker.bug.tracker.joza.domain.ticket;
 
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
 public class Ticket {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
     private String author;
     private String description;
-    private String priority;
+    @Enumerated(EnumType.STRING)
+    private TicketPriority priority;
 
     public Ticket() {
     }
 
-    public Ticket(Long id, String name, String author, String description, String priority) {
+    public Ticket(Long id, String name, String author, String description, TicketPriority priority) {
         this.id = id;
         this.name = name;
         this.author = author;
@@ -56,11 +57,11 @@ public class Ticket {
         this.description = description;
     }
 
-    public String getPriority() {
+    public TicketPriority getPriority() {
         return priority;
     }
 
-    public void setPriority(String priority) {
+    public void setPriority(TicketPriority priority) {
         this.priority = priority;
     }
 }

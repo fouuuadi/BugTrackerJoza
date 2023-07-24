@@ -1,8 +1,12 @@
 package com.bugtracker.bug.tracker.joza.service;
 
+import com.bugtracker.bug.tracker.joza.domain.response.ApiResponse;
 import com.bugtracker.bug.tracker.joza.domain.ticket.Ticket;
 import com.bugtracker.bug.tracker.joza.repository.TicketRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,59 +19,57 @@ public class TicketService {
     @Autowired
     public TicketRepository ticketRepository;
 
-    public Ticket getTicketById(Long id) {
+    public ApiResponse<Ticket> getTicketById(Long id) {
         Optional<Ticket> optionalTicket = ticketRepository.findById(id);
-        if (optionalTicket.isPresent()) {
-            return optionalTicket.get();
+        if (optionalTicket.isEmpty()) {
+            ApiResponse response = new ApiResponse("Ticket not found", "", null, 404);
+            return response;
         } else {
-            System.out.println("Le ticket n'existe pas.");
-            return null;
+            ApiResponse response = new ApiResponse("", "", optionalTicket.get(), 200);
+            return response;
         }
     }
 
     public List<Ticket> getAllTicket() {
         List<Ticket> allTickets = ticketRepository.findAll();
-        if(allTickets.isEmpty()) {
+        if (allTickets.isEmpty()) {
             System.out.println("Il n'y a aucun ticket.");
         }
         return allTickets;
     }
 
-    public Ticket createTicket(Ticket ticket) {
-        // Vérif de l'unicité de l'ID
-        if (ticketRepository.existsById(ticket.getId())) {
-            throw new IllegalArgumentException("Cet ID existe déjà.");
-        }
+    public ApiResponse<Ticket> createTicket(Ticket ticket) {
 
         // Vérif de l'unicité du nom
         if (ticketRepository.existsByName(ticket.getName())) {
-            throw new IllegalArgumentException("Un ticket avec ce nom existe déjà.");
+            return new ApiResponse<Ticket>("Ticket name already exists", "", null, 409);
         }
-
-        return ticketRepository.save(ticket);
+        Ticket newTicket = ticketRepository.save(ticket);
+        return new ApiResponse<Ticket>("", "", newTicket, 201);
     }
 
-    public Ticket updateTicket(Long id) {
+    public ApiResponse<Ticket> updateTicket(Long id, Ticket toUpdate) {
         Ticket existingTicket = ticketRepository.findById(id).orElse(null);
         if (existingTicket != null) {
-            Ticket updatedTicket = null;
-            existingTicket.setName(updatedTicket.getName());
-            existingTicket.setAuthor(updatedTicket.getAuthor());
-            existingTicket.setDescription(updatedTicket.getName());
-            existingTicket.setPriority(updatedTicket.getPriority());
 
-            return ticketRepository.save(existingTicket);
+            existingTicket.setName(toUpdate.getName());
+            existingTicket.setAuthor(toUpdate.getAuthor());
+            existingTicket.setDescription(toUpdate.getName());
+            existingTicket.setPriority(toUpdate.getPriority());
+
+            return new ApiResponse<>("", "", ticketRepository.save(existingTicket), 200);
         }
-        return null;
+        return new ApiResponse("Ticket not found", "", null, 404);
     }
+
     //On voit si l'id existe ensuite on le supprime
-    public Ticket deleteTicket(Long id) {
+    public ApiResponse<Ticket> deleteTicket(Long id) {
         Optional<Ticket> optionalTicket = ticketRepository.findById(id);
         if (optionalTicket.isPresent()) {
             Ticket ticketToDelete = optionalTicket.get();
             ticketRepository.deleteById(id);
-            return ticketToDelete;
+            return new ApiResponse("", "", ticketToDelete, 200);
         }
-        return null;
+        return new ApiResponse("Ticket not found", "", null, 404);
     }
 }
