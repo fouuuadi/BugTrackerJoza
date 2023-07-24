@@ -1,0 +1,93 @@
+/* Style pour le titre "Tickets" */
+h2 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+/* Style pour la table */
+table {
+  font-family: "PT Sans" ;
+  width: 100%;
+  border-collapse: collapse;
+  border: black;
+  padding: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+thead th{
+  background: #8b9091;
+}
+tbody{
+  font-size: 10px;
+  font-weight: lighter;
+}
+/* Style pour les en-têtes de colonne */
+th {
+  background-color: #f8f9fa;
+  padding: 10px;
+  border-right: 1px solid #0000001c;
+  text-align: left;
+  border-bottom: 1px solid #dee2e6;
+}
+
+/* Style pour les cellules de données */
+td {
+  padding: 10px;
+  border-bottom: 1px solid #dee2e6;
+}
+
+/* Style pour les lignes impaires */
+tr:nth-child(odd) {
+  background-color: #f8f9fa;
+}
+
+/* Style pour les lignes paires */
+tr:nth-child(even) {
+  background-color: #fff;
+}
+td{
+  border-bottom: 1px  solid #0000001c;
+  border-right: 1px solid #0000001c;
+
+}
+
+caption h2{
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+/* Media Query pour les écrans de taille moyenne */
+@media (max-width: 992px) {
+  table {
+    font-size: 14px;
+  }
+
+  th,
+  td {
+    padding: 8px;
+  }
+}
+
+/* Media Query pour les écrans de petite taille */
+@media (max-width: 768px) {
+
+
+  th,
+  td {
+    padding: 6px;
+  }
+}
+/* Media Query pour les appareils en mode paysage */
+@media (orientation: landscape) {
+  h2 {
+    font-size: 24px;
+  }
+}
+
+/* Media Query pour les écrans haute résolution (densité de pixels élevée) */
+@media (min-resolution: 2dppx) {
+  td {
+    font-weight: bold;
+  }
+}
