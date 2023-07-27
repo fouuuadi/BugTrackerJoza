@@ -25,7 +25,9 @@ const TicketSingle = () => {
 
     }, []);
 
-    return (<table>
+    return (
+        <div>
+        <table>
         <HeaderPage/>
         <caption><h2>Ticket {id}</h2></caption>
         {ticket && <div>
@@ -34,7 +36,9 @@ const TicketSingle = () => {
             <div>{ticket.name}</div>
             <div>{ticket.priority}</div>
         </div>}
-    </table>
+        </table>
+            <FooterPage/>
+        </div>
     )
 
 }
