@@ -3,6 +3,7 @@ import axios from "axios";
 import HeaderTable from "../../components/table/header/Header";
 import BodyTable from "../../components/table/body/Body";
 import HeaderHomePage from "../../components/layout/header-home/HeaderHome";
+import FooterPage from "../../components/layout/footer/FooterPage";
 
 const TicketList = () => {
 
@@ -33,6 +34,7 @@ const TicketList = () => {
                 <BodyTable data={tickets}/>
 
             </table>
+            <FooterPage/>
         </div>
     );
 }

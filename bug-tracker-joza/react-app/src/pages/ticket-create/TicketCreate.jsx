@@ -30,7 +30,6 @@ const TicketCreate = () => {
             <h2>Incident ticket creation form</h2>
             <FormCreate/>
             <FooterPage/>
-
         </div>
     );
 }

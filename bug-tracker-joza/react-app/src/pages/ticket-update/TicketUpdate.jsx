@@ -3,6 +3,7 @@ import axios from "axios";
 import FormUpdate from "../../components/forms/FormUpdate";
 import {useParams} from "react-router-dom";
 import HeaderPage from "../../components/layout/header/HeaderPage";
+import FooterPage from "../../components/layout/footer/FooterPage";
 
 const TicketUpdate = () => {
 
@@ -30,8 +31,8 @@ const TicketUpdate = () => {
             <table>
                 <h2>Change on ticket {id}</h2>
                 <FormUpdate/>
-
             </table>
+            <FooterPage/>
         </div>
 
     );
