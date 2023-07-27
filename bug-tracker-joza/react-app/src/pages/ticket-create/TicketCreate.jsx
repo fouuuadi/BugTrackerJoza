@@ -1,16 +1,20 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
 import FormCreate from "../../components/forms/FormCreate";
+import HeaderPage from "../../components/layout/header/HeaderPage";
+import FooterPage from "../../components/layout/footer/FooterPage";
+
 
 const TicketCreate = () => {
 
     const [tickets, setTickets] = useState([]);
 
     // Comportement
-    useEffect(() => {
+    useEffect( () => {
 
         // fetchData('url', 'get', setTickets);
-        axios.post('http://localhost:8080/tickets/')
+        //axios.post('http://localhost:8080/tickets/')
+        axios.post(`${process.env.REACT_APP_API_URL || "http://localhost:8080"}/tickets`)
             .then(response => {
                 setTickets(response.data);
             })
@@ -22,8 +26,10 @@ const TicketCreate = () => {
 
     return (
         <div>
+            <HeaderPage/>
             <h2>Incident ticket creation form</h2>
             <FormCreate/>
+            <FooterPage/>
 
         </div>
     );

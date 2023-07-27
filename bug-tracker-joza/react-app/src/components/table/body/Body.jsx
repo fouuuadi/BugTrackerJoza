@@ -8,7 +8,7 @@ const BodyTable = (props) => {
     return (<tbody>
     {props.data.map(ticket => (
         <tr key={ticket.id}>
-            <td>{ticket.id}</td>
+            <td link to>{ticket.id}</td>
             <td>{ticket.name}</td>
             <td>{ticket.author}</td>
             <td>{ticket.description}</td>

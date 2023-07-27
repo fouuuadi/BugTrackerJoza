@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 import axios from "axios";
 import FormUpdate from "../../components/forms/FormUpdate";
 import {useParams} from "react-router-dom";
+import HeaderPage from "../../components/layout/header/HeaderPage";
 
 const TicketUpdate = () => {
 
@@ -13,7 +14,8 @@ const TicketUpdate = () => {
     useEffect(() => {
 
         // fetchData('url', 'get', setTickets);
-        axios.get(`http://localhost:8080/tickets/${id}`)
+        //axios.get(`http://localhost:8080/tickets/${id}`)
+        axios.put(`${process.env.REACT_APP_API_URL || "http://localhost:8080"}/tickets/${id}`)
             .then(response => {
                 setTicket(response.data);
             })
@@ -23,11 +25,15 @@ const TicketUpdate = () => {
 
     }, []);
     return (
-        <table>
-            <h2>Change on ticket {id}</h2>
-            <FormUpdate/>
+        <div>
+            <HeaderPage/>
+            <table>
+                <h2>Change on ticket {id}</h2>
+                <FormUpdate/>
 
-        </table>
+            </table>
+        </div>
+
     );
 }
 

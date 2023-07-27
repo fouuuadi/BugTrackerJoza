@@ -12,6 +12,7 @@ const BugTrackerRouter = () => {
                 <Route path="/ticket/:id/update" element={<TicketUpdate/>}/>
                 <Route path="/ticket/create" element={<TicketCreate/>}/>
                 <Route path="/ticket/:id" element={<TicketSingle/>}/>
+                <Route path="*" element={<div>Page not found</div>} />
             </Routes>
         </BrowserRouter>
     )
