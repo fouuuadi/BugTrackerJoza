@@ -8,7 +8,8 @@ const HeaderTable = () => {
             <th>Name</th>
             <th>Author</th>
             <th>Description</th>
-            <th>priority</th>
+            <th>Priority</th>
+            <th>Action</th>
         </tr>
         </thead>)
 }

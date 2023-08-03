@@ -1,29 +1,32 @@
-/* Styles pour le bouton "Submit" */
-.submit-button {
-  background-color: #8b9091; /* Couleur de fond du bouton */
-  color: white; /* Couleur du texte du bouton */
-  padding: 10px 20px; /* Espacement intérieur du bouton (haut/bas gauche/droite) */
-  font-size: 16px; /* Taille de la police */
-  border: none; /* Suppression du bord du bouton */
-  border-radius: 4px; /* Arrondi des coins */
-  cursor: pointer; /* Changement de curseur au survol du bouton */
-  transition: background-color 0.3s; /* Transition de la couleur de fond pour un effet visuel */
-  margin: 0 auto; /* Ajouter cette propriété pour centrer le bouton horizontalement */
-  display: block; /* Ajouter cette propriété pour que le bouton occupe toute la largeur disponible */
+
+.btn {
+  border-radius: 12px;
+  color: #000;
+  cursor: pointer;
+  font-weight: bold;
+  padding: 10px 15px;
+  text-align: center;
+  transition: 200ms;
+  width: 15vh;
+  box-sizing: border-box;
+  border: 0;
+  font-size: 16px;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  display: flex;
+  align-items: center;
 }
 
-/* Style pour le bouton au survol */
-.submit-button:hover {
-  background-color: #282828; /* Couleur de fond du bouton au survol */
-}
+  .btn:not(:disabled):hover,
+  .btn:not(:disabled):focus {
+    outline: 0;
+    background: white;
+    box-shadow: 0 0 0 2px rgba(0,0,0,.2), 0 3px 8px 0 rgba(0,0,0,.15);
+  }
 
-/* Style pour le bouton lorsque pressé (clic) */
-.submit-button:active {
-  background-color: #282828; /* Couleur de fond du bouton lors du clic */
-}
-
-/* Style pour le bouton désactivé */
-.submit-button[disabled] {
-  background-color: #cccccc; /* Couleur de fond du bouton désactivé */
-  cursor: not-allowed; /* Curseur non autorisé */
-}
+  .btn:disabled {
+    filter: saturate(0.2) opacity(0.5);
+    -webkit-filter: saturate(0.2) opacity(0.5);
+    cursor: not-allowed;
+  }

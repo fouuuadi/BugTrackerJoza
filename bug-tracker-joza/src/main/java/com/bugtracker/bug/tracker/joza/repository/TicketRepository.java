@@ -15,9 +15,12 @@ public interface TicketRepository extends JpaRepository<Ticket, Long> {
     @Query("select t from Ticket t where t.id = :id")
     Ticket getTicketById(Long id);
 
+    //@Query("insert into ticket (name, auhtor, description, priority) values(:name,:author,:description, :priority")
+    //Ticket createTicket(Ticket createForm);
 
     @Query("select t from Ticket t")
     List<Ticket> getAllTicket();
+
     @Modifying
     @Query("delete from Ticket t where t.id = :id ")
     Ticket deleteTicket(Long id);

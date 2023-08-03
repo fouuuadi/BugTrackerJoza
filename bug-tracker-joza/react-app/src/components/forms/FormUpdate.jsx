@@ -1,8 +1,45 @@
-import React from "react";
+import React, {useState} from "react";
+import {useNavigate} from "react-router-dom";
+import axios from "axios";
+import Button from "../button/Button";
 
 const FormUpdate = () => {
-    return (
-        <form>
+
+    const FormCreate = () => {
+
+        const navigate = useNavigate()
+
+        const [name, setName] = useState();
+        const [author, setAuthor] = useState();
+        const [description, setDescription] = useState();
+        const [priority, setPriority] = useState('Choise it');
+
+
+// Comportement
+        const handleSubmitUpdate = (e) => {
+            e.preventDefault();
+            const formCreate = {name, author, description, priority};
+
+
+            // fetchData('url', 'get', setTickets);
+            //envoyer les données du formulaire a la base de données
+            axios
+                .post(`${process.env.REACT_APP_API_URL || "http://localhost:8080"}/tickets/`)
+                .then((response) => {
+                    console.log("Ticket ajouté avec succès !", response.data);
+
+                    //rediriger l'utilisateur vers la page d'accueil aprés l'ajout réussi
+                    navigate(`/`)
+                })
+
+                .catch((error) => {
+                    console.log('Erreur lors de la récupération des données:', error);
+                });
+        };
+
+        return (
+
+            <form onSubmit={handleSubmitUpdate}>
             <label htmlFor="name">Name</label>
             <input type="text" id="name" name="name"></input>
 
@@ -20,9 +57,9 @@ const FormUpdate = () => {
                 <option value="CRITICAL">CRITICAL</option>
             </select>
 
-            <button className="submit-button"type="submit">Update your ticket</button>
-        </form>
-    )
+
+        </form>)
+    }
 }
 
 export default FormUpdate;

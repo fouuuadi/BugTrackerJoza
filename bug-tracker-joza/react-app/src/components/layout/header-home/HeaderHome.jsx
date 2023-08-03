@@ -1,17 +1,31 @@
 import React from "react";
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
+import Button from "../../button/Button";
+import "./HeaderHome.scss";
 
- const HeaderHomePage = () => {
-     return(
-         <div>
-             <header>
-                 <nav>
-                     <ul>
-                         <li><Link to="/ticket/create">Create Ticket</Link></li>
-                     </ul>
-                 </nav>
-             </header>
-         </div>
-     )
- }
- export default HeaderHomePage;
+const HeaderHomePage = () => {
+
+    const navigate = useNavigate();
+
+    return (
+        <div>
+            <header className="header-nav">
+                <nav>
+                    <h1 className="title">BuhTrackerJoza</h1>
+                    <ul>
+                        <li className="btn">
+                            <Button label="Create Ticket"
+                                    action={() => {
+                                        navigate('/ticket/create')
+                                    }}
+                                    color="blue"
+                            />
+                        </li>
+                        {/*<li><Link to="/ticket/create">Create Ticket</Link></li>*/}
+                    </ul>
+                </nav>
+            </header>
+        </div>
+    )
+}
+export default HeaderHomePage;

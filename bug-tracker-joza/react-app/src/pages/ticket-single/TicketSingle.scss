@@ -1,0 +1,17 @@
+/* Styles de base pour la carte */
+.container {
+  width: 300px; /* Largeur de la carte */
+  height: 200px; /* Hauteur de la carte */
+  perspective: 1000px; /* Perspective pour l'effet 3D */
+}
+
+
+/* Face avant de la carte */
+.front {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #282828;
+  backface-visibility: hidden; /* Cache la face avant lorsqu'elle n'est pas visible */
+}
+

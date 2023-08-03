@@ -16,8 +16,9 @@ const TicketUpdate = () => {
 
         // fetchData('url', 'get', setTickets);
         //axios.get(`http://localhost:8080/tickets/${id}`)
-        axios.put(`${process.env.REACT_APP_API_URL || "http://localhost:8080"}/tickets/${id}`)
+        id && axios.get(`${process.env.REACT_APP_API_URL || "http://localhost:8080"}/tickets/${id}`)
             .then(response => {
+                console.log(response);
                 setTicket(response.data);
             })
             .catch(error => {
@@ -28,10 +29,10 @@ const TicketUpdate = () => {
     return (
         <div>
             <HeaderPage/>
-            <table>
+            <div>
                 <h2>Change on ticket {id}</h2>
                 <FormUpdate/>
-            </table>
+            </div>
             <FooterPage/>
         </div>
 
