@@ -5,14 +5,13 @@ import BodyTable from "../../components/table/body/Body";
 import HeaderHomePage from "../../components/layout/header-home/HeaderHome";
 import FooterPage from "../../components/layout/footer/FooterPage";
 
+
 const TicketList = () => {
 
     const [tickets, setTickets] = useState([]);
 
-    // Comportement
-    useEffect(() => {
 
-        // fetchData('url', 'get', setTickets);
+    const refresh = () => {
         axios.get(`${process.env.REACT_APP_API_URL || "http://localhost:8080"}/tickets/all`)
             //axios.get('http://localhost:8080/tickets/all')
             .then(response => {
@@ -22,6 +21,11 @@ const TicketList = () => {
                 console.log('Erreur lors de la récupération des données:', error);
             });
 
+    }
+
+    // Comportement
+    useEffect(() => {
+        refresh()
     }, []);
 
     return (
@@ -31,7 +35,7 @@ const TicketList = () => {
 
                 <caption><h2>All tickets</h2></caption>
                 <HeaderTable/>
-                <BodyTable data={tickets}/>
+                <BodyTable data={tickets} refresh={refresh}/>
 
             </table>
             <FooterPage/>
