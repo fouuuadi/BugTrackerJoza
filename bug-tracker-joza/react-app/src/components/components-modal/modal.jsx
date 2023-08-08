@@ -3,7 +3,7 @@ import Button from "../button/Button";
 import './modal.scss';
 import {RiCloseLine} from "react-icons/ri";
 
-const Modal = ({ setIsOpen }) => {
+const Modal = ({ setIsOpen, method }) => {
     return (
         <>
             <div className="darkBG" onClick={() => setIsOpen(false)}/>
@@ -21,14 +21,14 @@ const Modal = ({ setIsOpen }) => {
                     <div className="modalActions">
                         <div className="actionsContainer">
                             <button className="deleteBtn"
-                                    onClick={() => setIsOpen(false)}
+                                    onClick={() => method()}
                             >
-                                Delete
+                                delete
                             </button>
                             <button className="cancelBtn"
                                     onClick={() => setIsOpen(false)}
                                     >
-                                Cancel
+                                cancel
                             </button>
                         </div>
                     </div>

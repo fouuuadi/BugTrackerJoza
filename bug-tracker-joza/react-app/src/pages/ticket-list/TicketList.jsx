@@ -29,7 +29,7 @@ const TicketList = () => {
     }, []);
 
     return (
-        <div>
+        <>
             <HeaderHomePage/>
             <table>
 
@@ -39,7 +39,7 @@ const TicketList = () => {
 
             </table>
             <FooterPage/>
-        </div>
+        </>
     );
 }
 

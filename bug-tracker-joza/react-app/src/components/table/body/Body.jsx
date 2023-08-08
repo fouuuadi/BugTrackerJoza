@@ -4,34 +4,24 @@ import {faEye, faMarker, faTrash} from "@fortawesome/free-solid-svg-icons";
 import {useNavigate} from "react-router-dom";
 import Button from "../../button/Button";
 import axios from "axios";
-import modal from "../../components-modal/modal";
 import Modal from "../../components-modal/modal";
 
 const BodyTable = (props) => {
-    useEffect(() => {
-        console.log(props);
-    }, []);
-
     const navigate = useNavigate();
+    const [isOpen, setIsOpen] = useState(false);
 
     const TicketDelete = (id) => {
-
         axios
             .delete(`${process.env.REACT_APP_API_URL || "http://localhost:8080"}/tickets/${id}`)
             .then((response) => {
                 console.log("Ticket supprimé avec succès !", response.data);
+                setIsOpen(false);
                 props.refresh()
             })
             .catch((error) => {
                 console.log('Erreur lors de la suppression des données', error);
             });
-
-
     };
-
-    const confirmationModalHandler = () => {
-
-    }
     const handleAction = (action, ticket) => {
         if (action === "view") {
             navigate(`/ticket/${ticket.id}`);
@@ -46,7 +36,6 @@ const BodyTable = (props) => {
         // Ajoutez ici d'autres conditions pour les autres actions si nécessaire
     };
 
-    const [isOpen, setIsOpen] = useState(false);
 
     return (<tbody>
         {props.data.map((ticket) => (<tr key={ticket.id}>
@@ -77,7 +66,7 @@ const BodyTable = (props) => {
                     >
                         <Button
                             label={<span>
-                    <FontAwesomeIcon icon={faEye} style={{color: "#4f7a28",}}/>
+                                <FontAwesomeIcon icon={faEye} style={{color: "#4f7a28",}}/>
                                     Display
                                 </span>}
                             color="none"
@@ -87,7 +76,7 @@ const BodyTable = (props) => {
                         />
                         <Button
                             label={<span>
-                    <FontAwesomeIcon icon={faMarker} style={{color: "#001e57",}}/>{" "}
+                                <FontAwesomeIcon icon={faMarker} style={{color: "#001e57",}}/>
                                 Update
                                    </span>}
                             color="none"
@@ -96,6 +85,16 @@ const BodyTable = (props) => {
                             }}
                         />
                         <Button
+                            label={
+                            <span>
+                                <FontAwesomeIcon icon={faTrash} style={{color: "#b51a00",}} />
+                                Delete
+                            </span>
+                            }
+                            color="none"
+                            action={() => setIsOpen(true)}
+                        />
+                        {isOpen && <Modal method={()=>(handleAction('delete',ticket))} setIsOpen={setIsOpen} />}
                     </div>
                 </td>
             </tr>))}
