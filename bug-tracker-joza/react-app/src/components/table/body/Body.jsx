@@ -1,9 +1,11 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faEye, faMarker, faTrash} from "@fortawesome/free-solid-svg-icons";
 import {useNavigate} from "react-router-dom";
 import Button from "../../button/Button";
 import axios from "axios";
+import modal from "../../components-modal/modal";
+import Modal from "../../components-modal/modal";
 
 const BodyTable = (props) => {
     useEffect(() => {
@@ -11,7 +13,6 @@ const BodyTable = (props) => {
     }, []);
 
     const navigate = useNavigate();
-
 
     const TicketDelete = (id) => {
 
@@ -27,6 +28,10 @@ const BodyTable = (props) => {
 
 
     };
+
+    const confirmationModalHandler = () => {
+
+    }
     const handleAction = (action, ticket) => {
         if (action === "view") {
             navigate(`/ticket/${ticket.id}`);
@@ -40,6 +45,8 @@ const BodyTable = (props) => {
         }
         // Ajoutez ici d'autres conditions pour les autres actions si nécessaire
     };
+
+    const [isOpen, setIsOpen] = useState(false);
 
     return (<tbody>
         {props.data.map((ticket) => (<tr key={ticket.id}>
@@ -89,15 +96,6 @@ const BodyTable = (props) => {
                             }}
                         />
                         <Button
-                            label={<span>
-                    <FontAwesomeIcon icon={faTrash} style={{color: "#b51a00"}}/>{" "}
-                                Delete
-                  </span>}
-                            color="none"
-                            action={() => {
-                                handleAction("delete", ticket)
-                            }}
-                        />
                     </div>
                 </td>
             </tr>))}
