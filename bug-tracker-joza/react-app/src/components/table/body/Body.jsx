@@ -38,7 +38,7 @@ const BodyTable = (props) => {
 
 
     return (<tbody>
-        {props.data.map((ticket) => (<tr key={ticket.id}>
+        {props.data && props.data.map((ticket) => (<tr key={ticket.id}>
                 <td>
                     <Button
                         label={ticket.id}
