@@ -11,7 +11,7 @@ const HeaderHomePage = () => {
         <div>
             <header className="header-nav">
                 <nav>
-                    <h1 className="title">BuhTrackerJoza</h1>
+                    <h1 className="title">BugTrackerJoza</h1>
                     <ul>
                         <li className="btn">
                             <Button label="Create Ticket"
