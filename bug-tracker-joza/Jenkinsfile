@@ -16,9 +16,9 @@ pipeline {
             steps {
                 script {
                     if (params.rebuildContainer) {
-                        sh "ssh joza@87.90.82.189 'cd bugtracker && docker-compose up --build -d'"
+                        sh "ssh joza@87.90.82.189 'cd bugtracker/bug-tracker-joza && docker-compose up --build -d'"
                     } else {
-                        sh "ssh joza@87.90.82.189 'cd bugtracker && docker-compose up -d'"
+                        sh "ssh joza@87.90.82.189 'cd bugtracker/bug-tracker-joza && docker-compose up -d'"
                     }
                 }
             }
