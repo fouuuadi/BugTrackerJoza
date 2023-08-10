@@ -1,5 +1,5 @@
 FROM node:lts-alpine as builder
-ENV REACT_APP_API_URL "https://google.com"
+ENV REACT_APP_API_URL "https://bugtracker-api.joza-it.fr"
 WORKDIR /app
 COPY . .
 RUN rm -rf node_modules && npm install
