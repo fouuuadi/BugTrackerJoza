@@ -29,10 +29,8 @@ const TicketUpdate = () => {
     return (
         <div>
             <HeaderPage/>
-            <div>
                 <h2>Change on ticket {id}</h2>
                 <FormUpdate/>
-            </div>
             <FooterPage/>
         </div>
 
