@@ -4,7 +4,7 @@ import './Forms.scss';
 import axios from "axios";
 import Button from "../button/Button";
 
-const FormCreate = () => {
+const FormCreate = ({id}) => {
 
     const navigate = useNavigate()
 
@@ -12,12 +12,39 @@ const FormCreate = () => {
     const [author, setAuthor] = useState();
     const [description, setDescription] = useState();
     const [priority, setPriority] = useState('NONE');
+    const [isCreation, setIsCreating] = useState(true);
+
+
+    const fetchTicketById = (id) => {
+        axios.get(`${process.env.REACT_APP_API_URL || "http://localhost:8080"}/tickets/${id}`)
+            .then(response => {
+                setName(response.data.content.name);
+                setAuthor(response.data.content.author);
+                setDescription(response.data.content.description);
+                setPriority(response.data.content.priority);
+            })
+            .catch(error => {
+                console.log('Erreur lors de la récupération des données:', error);
+            });
+    }
+
+    useEffect(() => {
+        if (id === undefined) {
+            // on est dans le cas d'une création
+            setIsCreating(true);
+        } else {
+            setIsCreating(false);
+            fetchTicketById(parseInt(id));
+
+            // on est dans le cas d'un update
+        }
+    }, [id])
 
 
 // Comportement
     const handleSubmitCreate = (e) => {
         e.preventDefault();
-        const formCreate = {name, author, description, priority};
+        const formCreate = {id, name, author, description, priority};
 
         if (priority === 'NONE') {
             alert("Veuillez choisir une priorité")
@@ -47,7 +74,9 @@ const FormCreate = () => {
                    onChange={(e) => setName(e.target.value)}></input>
 
             <label htmlFor="author">Author</label>
-            <input type="text" id="author" name="author" required value={author}
+            <input type="text" id="author"
+                   className={isCreation ? '' : 'disabled'}
+                   name="author" required value={author} readOnly={!isCreation}
                    onChange={(e) => setAuthor(e.target.value)}></input>
 
             <label htmlFor="description">Description</label>
@@ -65,8 +94,8 @@ const FormCreate = () => {
                 <option value="CRITICAL">CRITICAL</option>
             </select>
             <div className="btn-create">
-            <Button label="Validate your ticket"
-                    color = "blue"/>
+                <Button label="Validate your ticket"
+                        color="blue"/>
             </div>
         </form>
     )

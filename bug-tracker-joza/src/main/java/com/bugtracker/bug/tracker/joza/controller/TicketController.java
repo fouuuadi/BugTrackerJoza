@@ -18,10 +18,8 @@ import java.util.List;
 @RequestMapping("/tickets")
 public class TicketController {
 
-
     @Autowired
     private TicketService ticketService;
-
 
     @GetMapping("/all")
     public ResponseEntity<List<Ticket>> readAllTickets() {
@@ -40,16 +38,9 @@ public class TicketController {
         return new ResponseEntity<>(response, HttpStatusCode.valueOf(response.getStatusCode()));
     }
 
-
-    @PutMapping("/{id}")
-    public ResponseEntity<ApiResponse<Ticket>> updateTicket(@PathVariable Long id, @RequestBody Ticket updateForm) {
-        var response = this.ticketService.updateTicket(id, updateForm);
-        return new ResponseEntity<>(response, HttpStatusCode.valueOf(response.getStatusCode()));
-    }
-
     @PostMapping("/")
-    public ResponseEntity<ApiResponse<Ticket>> createTicket( @RequestBody Ticket createForm) {
-        var response = this.ticketService.createTicket(createForm);
+    public ResponseEntity<ApiResponse<Ticket>> saveTicket(@RequestBody Ticket createForm) {
+        ApiResponse<Ticket> response = this.ticketService.createTicket(createForm);
         return new ResponseEntity<>(response, HttpStatusCode.valueOf(response.getStatusCode()));
     }
 }
