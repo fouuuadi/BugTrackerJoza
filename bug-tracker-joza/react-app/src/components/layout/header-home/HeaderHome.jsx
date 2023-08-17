@@ -21,7 +21,6 @@ const HeaderHomePage = () => {
                                     color="blue"
                             />
                         </li>
-                        {/*<li><Link to="/ticket/create">Create Ticket</Link></li>*/}
                     </ul>
                 </nav>
             </header>
