@@ -1,7 +1,9 @@
 import React from "react";
-import {Link, useNavigate} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import Button from "../../button/Button";
 import "./HeaderHome.scss";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faSquarePlus} from "@fortawesome/free-solid-svg-icons";
 
 const HeaderHomePage = () => {
 
@@ -10,19 +12,21 @@ const HeaderHomePage = () => {
     return (
         <div>
             <header className="header-nav">
-                <nav>
-                    <h1 className="title">BugTrackerJoza - test</h1>
-                    <ul>
-                        <li className="btn">
-                            <Button label="Create Ticket"
+                    <h1 className="title">BugTrackerJoza</h1>
+                        <div className="btn-create">
+                            <Button label={
+                                <span className="span-create">
+                                    <FontAwesomeIcon
+                                        icon={faSquarePlus}
+                                        style={{color: "#02f740",}} />
+                                     Create Ticket
+                                  </span>}
                                     action={() => {
                                         navigate('/ticket/create')
                                     }}
-                                    color="blue"
+                                    color="none"
                             />
-                        </li>
-                    </ul>
-                </nav>
+                        </div>
             </header>
         </div>
     )

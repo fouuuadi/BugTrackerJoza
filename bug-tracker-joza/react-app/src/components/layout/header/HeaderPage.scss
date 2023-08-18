@@ -1,21 +1,38 @@
-header{
-  background-color: rgb(40, 40, 40);
-  color: white;
-  padding: 15px;
-}
 
 .header-nav{
+  background-color: rgb(40, 40, 40);
+  color: white;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding: 15px 0px;
 }
 
-.title{
-text-align: center;
+.title {
+  font-size: 24px;
+  color: white;
+  margin-right: auto;
 }
-
-.btn{
+.btn-forms{
+  display: flex;
   list-style-type: none;
+  margin-right: 20px;
+}
+.span-forms{
+  color: black;
+}
+.btn-forms button {
+  background-color: #ffffff;
+  color: white;
+  font-size: 16px;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
 }
 
-
+.btn-forms button:hover {
+  background-color: #ffffff;
+  transform: scale(1.05);
+}

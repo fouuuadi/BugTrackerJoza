@@ -1,21 +1,38 @@
-header{
-  background-color: rgb(40, 40, 40);
-  color: white;
-  padding: 15px;
-}
 
 .header-nav{
+  background-color: rgb(40, 40, 40);
+  color: white;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding-left: 20px;
 }
 
-.title{
-  margin-left: auto;
+.title {
+  font-size: 24px;
+  color: white;
   margin-right: auto;
 }
-
-.btn{
+.btn-create{
   display: flex;
   list-style-type: none;
+  margin-right: 20px;
+}
+.span-create{
+  color: black;
+}
+.btn-create button {
+  background-color: #ffffff;
+  color: white;
+  font-size: 16px;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.btn-create button:hover {
+  background-color: #00bd70;
+  transform: scale(1.05);
 }

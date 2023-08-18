@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import axios from "axios";
 import {useNavigate, useParams} from "react-router-dom";
 import HeaderPage from "../../components/layout/header/HeaderPage";
-import FooterPage from "../../components/layout/footer/FooterPage";
+import FooterForms from "../../components/layout/footer-forms/FooterForms";
 import Button from "../../components/button/Button";
 
 const TicketSingle = () => {
@@ -40,7 +40,7 @@ const TicketSingle = () => {
             <div>{ticket.priority}</div>
         </div>}
         </table>
-            <FooterPage/>
+            <FooterForms/>
         </div>
 
     )

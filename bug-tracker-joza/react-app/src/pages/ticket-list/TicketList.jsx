@@ -3,7 +3,7 @@ import axios from "axios";
 import HeaderTable from "../../components/table/header/Header";
 import BodyTable from "../../components/table/body/Body";
 import HeaderHomePage from "../../components/layout/header-home/HeaderHome";
-import FooterPage from "../../components/layout/footer/FooterPage";
+import FooterHome from "../../components/layout/footer-home/FooterHome";
 
 
 const TicketList = () => {
@@ -38,7 +38,7 @@ const TicketList = () => {
                 <BodyTable data={tickets} refresh={refresh}/>
 
             </table>
-            <FooterPage/>
+            <FooterHome/>
         </>
     );
 }

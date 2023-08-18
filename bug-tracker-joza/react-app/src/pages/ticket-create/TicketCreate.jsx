@@ -2,7 +2,7 @@ import React from "react";
 
 import FormCreate from "../../components/forms/FormCreate";
 import HeaderPage from "../../components/layout/header/HeaderPage";
-import FooterPage from "../../components/layout/footer/FooterPage";
+import FooterForms from "../../components/layout/footer-forms/FooterForms";
 import {useParams} from "react-router-dom";
 
 
@@ -19,7 +19,7 @@ const TicketCreate = () => {
                 <h2>Incident ticket update form</h2>
             }
             <FormCreate id={id}/>
-            <FooterPage/>
+            <FooterForms/>
         </div>
     );
 }

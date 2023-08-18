@@ -1,0 +1,18 @@
+.footer-forms {
+  background-color: rgb(40, 40, 40);
+  color: white;
+  padding: 15px 0px;
+  position: fixed; /* Positionnement relatif */
+  bottom: 10px;
+  left: 10px;
+  right: 10px;
+}
+p {
+  text-align: center;
+}
+
+@media screen and (max-height: 680px) {
+  .footer-forms {
+    display: none;
+  }
+}

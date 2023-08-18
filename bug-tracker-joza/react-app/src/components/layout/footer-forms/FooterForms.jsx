@@ -1,11 +1,11 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
 
-const FooterPage = () => {
+const FooterForms = () => {
     return (
-        <footer>
+        <footer className="footer-forms">
             <p>Create by LAMNAOUAR Fouad</p>
         </footer>
     )
 }
-export default FooterPage;
+export default FooterForms;
