@@ -3,8 +3,9 @@
 @import 'components/layout/footer-forms/FooterForms';
 @import 'components/layout/footer-home/FooterHome';
 @import 'components/layout/header/HeaderPage.scss';
-h2 {
-  text-align: center;
-  margin-bottom: 30px;
+.titre-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 

@@ -39,26 +39,11 @@ const BodyTable = (props) => {
 
     return (<tbody>
         {props.data && props.data.map((ticket) => (<tr key={ticket.id}>
-                <td>
-                    <Button
-                        label={ticket.id}
-                        action={() => {
-                            navigate(`/ticket/${ticket.id}`);
-                        }}
-                        color="grey"
-                    />
-                </td>
+                <td>{ticket.id}</td>
                 <td>{ticket.name}</td>
                 <td>{ticket.author}</td>
                 <td>{ticket.description}</td>
-                <td>
-                    <select value={ticket.priority}>
-                        <option value={"CRITICAL"}>CRITICAL</option>
-                        <option value={"HIGH"}>HIGH</option>
-                        <option value={"MEDIUM"}>MEDIUM</option>
-                        <option value={"LOW"}>LOW</option>
-                    </select>
-                </td>
+                <td>{ticket.priority}</td>
                 <td>
                     <div
                         onChange={(e) => handleAction(e.target.value, ticket)}

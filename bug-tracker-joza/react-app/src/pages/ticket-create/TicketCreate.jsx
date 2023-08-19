@@ -15,8 +15,8 @@ const TicketCreate = () => {
         <div>
             <HeaderPage/>
             {id === undefined ?
-                <h2>Incident ticket creation form</h2> :
-                <h2>Incident ticket update form</h2>
+                <h2 className="titre-page">Incident ticket creation form</h2> :
+                <h2 className="titre-page">Incident ticket update form</h2>
             }
             <FormCreate id={id}/>
             <FooterForms/>

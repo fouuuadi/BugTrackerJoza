@@ -33,7 +33,7 @@ const TicketList = () => {
             <HeaderHomePage/>
             <table>
 
-                <caption><h2>All tickets</h2></caption>
+                <caption><h2 className="titre-page">All tickets</h2></caption>
                 <HeaderTable/>
                 <BodyTable data={tickets} refresh={refresh}/>
 

@@ -32,7 +32,7 @@ const TicketSingle = () => {
         <div>
             <HeaderPage/>
         <table>
-        <caption><h2>Ticket {id}</h2></caption>
+        <caption><h2 className="titre-page">Ticket {id}</h2></caption>
         {ticket && <div>
             <div>{ticket.id}</div>
             <div>{ticket.description}</div>
