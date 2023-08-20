@@ -31,20 +31,34 @@ const TicketSingle = () => {
     return (
         <div>
             <HeaderPage/>
-        <table>
-        <caption><h2 className="titre-page">Ticket {id}</h2></caption>
-        {ticket && <div>
-            <div>{ticket.id}</div>
-            <div>{ticket.description}</div>
-            <div>{ticket.name}</div>
-            <div>{ticket.priority}</div>
-        </div>}
-        </table>
+            <div className="container">
+            <div className="ticket-card">
+                <h2 className="titre-page">Ticket {id}</h2>
+                {ticket && (
+                    <div className="ticket-details">
+                        <div className="ticket-info">
+                            <div className="ticket-property">ID:</div>
+                            <div className="ticket-value">{ticket.id}</div>
+                        </div>
+                        <div className="ticket-info">
+                            <div className="ticket-property">Description:</div>
+                            <div className="ticket-value overflow-description">{ticket.description}</div>
+                        </div>
+                        <div className="ticket-info">
+                            <div className="ticket-property">Name:</div>
+                            <div className="ticket-value">{ticket.name}</div>
+                        </div>
+                        <div className="ticket-info">
+                            <div className="ticket-property">Priority:</div>
+                            <div className="ticket-value">{ticket.priority}</div>
+                        </div>
+                    </div>
+                )}
+            </div>
+            </div>
             <FooterForms/>
         </div>
-
-    )
-
-}
+    );
+};
 
 export default TicketSingle;
