@@ -1,8 +1,7 @@
 .container {
   display: flex;
   justify-content: center;
-  align-items: flex-start; /* Align items to the top */
-  min-height: 100vh; /* A minimum of 100% viewport height */
+  align-items: flex-start;
 }
 
 .ticket-card {
@@ -13,7 +12,7 @@
   border: 1px solid #ccc;
   border-radius: 5px;
   padding: 15px;
-  width: 600px; /* Adjust the width as needed */
+  width: 600px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 
   .ticket-details {
@@ -24,7 +23,7 @@
 
       .ticket-property {
         font-weight: bold;
-        width: 100px; /* Adjust the width as needed */
+        width: 100px;
       }
 
       .ticket-value {
@@ -32,15 +31,11 @@
       }
       .overflow-description {
         flex-grow: 1;
-        max-width: 200px; /* Adjust the width as needed */
+        max-width: 200px;
         overflow: hidden;
         white-space: nowrap;
         text-overflow: ellipsis;
       }
     }
   }
-}
-
-.footer {
-  /* Add styles for FooterForms component */
 }
